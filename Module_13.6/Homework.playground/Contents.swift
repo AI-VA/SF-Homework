@@ -47,12 +47,21 @@ for (index, days) in daysInMonths.reversed().enumerated() {
 
 
 // Для произвольно выбранной даты (месяц и день) посчитай количество дней до конца года
-let calendar = Calendar.current
-let now = Date()
-let endOfYear = calendar.date(from: DateComponents(year: calendar.component(.year, from: now), month: 12, day: 31))!
+let daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+let monthNames = ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"]
 
-let daysLeft = calendar.dateComponents([.day], from: now, to: endOfYear).day!
-print("До конца года осталось \(daysLeft) дней")
+let month = 5 // май
+let day = 20
+
+// Сколько дней осталось в текущем месяце
+let daysInCurrentMonth = daysInMonth[month - 1] - day + 1
+
+// Сколько дней осталось в остальных месяцах до конца года
+let daysInRestOfYear = daysInMonth.suffix(from: month).reduce(0, +)
+
+let daysUntilEndOfYear = daysInCurrentMonth + daysInRestOfYear - 1 // -1 чтобы не учитывать текущий день
+print("До конца года осталось \(daysUntilEndOfYear) дней")
+
 
 
 // MARK: 3.

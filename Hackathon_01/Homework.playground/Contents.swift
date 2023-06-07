@@ -31,7 +31,6 @@ enum TextErrors: String {
     case notDepositMoney = "У вас недостаточно средств на депозите"
 }
 
-
 struct User: UserData {
     var userName: String
     var userCardId: String
@@ -165,7 +164,6 @@ class ATM {
     }
 }
 
-// Пользовательские данные, которые хранятся на сервере банка (данные были внесены, когда пользователь зарегистрировался в банке)
 let bank_user: UserData = User(userName: "User",
                                userCardId: "3339 0039 3312 2222",
                                userCardPin: 1234,
@@ -174,10 +172,8 @@ let bank_user: UserData = User(userName: "User",
                                userPhone: "+7(889)-393-43-44",
                                userPhoneBalance: -34.44)
 
-// Какой-то банк, в котором зарегистрирован пользователь (в этом банке хранятся данные пользователя)
 let bankClient = BankServer(user: bank_user)
 
-// Текущий банкомат, с которым мы работаем в данный момент
 let atm443 = ATM(userCardId: "3339 0039 3312 2222",
                  userCardPin: 1234,
                  someBank: bankClient)
